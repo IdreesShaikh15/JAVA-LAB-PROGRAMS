@@ -1,0 +1,91 @@
+import java.util.Scanner;
+
+class Stud_details {
+int marks[] = new int[8];
+int credits[] = {3, 3, 3, 3, 3, 3, 3, 3};
+String usn, name;
+int gradePoints[] = new int[8]; 
+double sgpa;
+Scanner sc = new Scanner(System.in);
+
+void getDetails() {
+System.out.print("Enter USN: ");
+usn = sc.next();
+System.out.print("Enter Name: ");
+name = sc.next();
+System.out.println("Enter marks for 8 subjects:");
+for (int i = 0; i < 8; i++) 
+{
+System.out.print("Marks of Subject " + (i + 1) + ": ");
+marks[i] = sc.nextInt();
+calculateGradePoint(i);
+}
+}
+void calculateGradePoint(int i) 
+{
+if (marks[i] >= 90) {
+gradePoints[i] = 10;
+} else if (marks[i] >= 80) {
+gradePoints[i] = 9;
+} else if (marks[i] >= 70) {
+gradePoints[i] = 8;
+} else if (marks[i] >= 60) {
+gradePoints[i] = 7;
+} else if (marks[i] >= 50) {
+gradePoints[i] = 6;
+} else if (marks[i] >= 40) {
+gradePoints[i] = 5;
+} else {
+gradePoints[i] = 0;
+}
+}
+
+void calculatesgpa() 
+{
+int totalCredits = 0;
+int totalMarks = 0;
+for (int i = 0; i < 8; i++)
+{
+totalCredits += credits[i];
+totalMarks += gradePoints[i] * credits[i];
+}
+sgpa = (double) totalMarks / totalCredits;
+}
+
+void display() 
+{
+System.out.println("\nUSN: " + usn);
+System.out.println("Name: " + name);
+System.out.println("Marks of 8 subjects:");
+for (int i = 0; i < 8; i++) {
+System.out.println("Subject " + (i + 1) + ": " + marks[i] + " (Grade Point: " + gradePoints[i] + ")");
+}
+System.out.println("SGPA: " + String.format("%.2f", sgpa));
+}
+}
+
+public class Student 
+{
+public static void main(String[] args) 
+{
+Stud_details[] s1 = new Stud_details[3]; 
+
+for (int j = 0; j < 3; j++) 
+{
+s1[j] = new Stud_details();
+}
+for (int j = 0; j < 3; j++) 
+{
+System.out.println("\nEnter the details for Student " + (j + 1) + ":");
+s1[j].getDetails();
+}
+for (int j = 0; j < 3; j++) 
+{
+s1[j].calculatesgpa();
+}
+for (int j = 0; j < 3; j++) {
+System.out.println("\nDetails of Student " + (j + 1) + ":");
+s1[j].display();
+}
+}
+}
