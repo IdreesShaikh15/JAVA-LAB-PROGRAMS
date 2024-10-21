@@ -1,0 +1,62 @@
+import java.util.Scanner;
+
+class InputScanner {
+Scanner sc = new Scanner(System.in);
+
+public int getIntInput(String prompt) {
+System.out.print(prompt);
+return sc.nextInt();
+}
+
+public double getDoubleInput(String prompt) {
+System.out.print(prompt);
+return sc.nextDouble();
+}
+}
+
+abstract class Shape extends InputScanner {
+int dim1, dim2;
+abstract void printArea();
+}
+
+class Rectangle extends Shape {
+   
+void printArea() {
+dim1 = getIntInput("Enter the length of the rectangle: ");
+dim2 = getIntInput("Enter the breadth of the rectangle: ");
+int area = dim1 * dim2;
+System.out.println("Area of Rectangle: " + area);
+}
+}
+
+class Triangle extends Shape {
+   
+void printArea() {
+dim1 = getIntInput("Enter the base of the triangle: ");
+dim2 = getIntInput("Enter the height of the triangle: ");
+double area = 0.5 * dim1 * dim2;
+System.out.println("Area of Triangle: " + area);
+}
+}
+
+class Circle extends Shape {
+  
+void printArea() {
+dim1 = getIntInput("Enter the radius of the circle: ");
+double area = Math.PI * dim1 * dim1;
+System.out.println("Area of Circle: " + area);
+}
+}
+
+public class Main {
+public static void main(String[] args) {
+Shape rectangle = new Rectangle();
+rectangle.printArea();
+      
+Shape triangle = new Triangle();
+triangle.printArea();
+
+Shape circle = new Circle();
+circle.printArea();
+}
+}
