@@ -48,7 +48,7 @@ class Son extends Father {
 
 public class AgeValidation {
     public static void main(String[] args) {
-        System.out.println("Ikshitha P");
+        System.out.println("Idrees Shaikh 1BM23CS117");
         try {
             Son son = new Son();
             son.display();
