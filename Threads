@@ -36,6 +36,6 @@ public class DisplayMessages {
         
         collegeThread.start();
         cseThread.start();
-System.out.println("Ikshitha P");
+System.out.println("Idrees Shaikh");
     }
 }
